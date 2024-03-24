@@ -18,13 +18,18 @@ target_x = random.randint(0, SCREEN_WIDTH - target_width)
 target_y = random.randint(0, SCREEN_HEIGHT - target_height)
 color = (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
 
-
+font = pygame.font.Font(None, 36) # 36 - размер шрифта
 
 running = True
 score = 0
 while running:
     screen.fill(color)
-    print(score)
+    text_score = "Счет: " + str(score)
+    text = font.render(text_score, True, (240, 240, 240))
+    text_rect = text.get_rect()
+    text_rect = (10, 10)
+    screen.blit(text, text_rect)
+
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
